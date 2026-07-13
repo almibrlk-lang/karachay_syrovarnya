@@ -455,7 +455,6 @@
     background-color: #ffffff;
     text-align: center; /* Центрирует всё содержимое блока */
 }
-}
 
 .menu-grid {
     max-width: 900px;
@@ -763,50 +762,53 @@
 }
 /* 📱 МОБИЛЬНАЯ АДАПТИВНОСТЬ (Для экранов меньше 768px) */
 @media (max-width: 768px) {
-    /* Перестраиваем шапку в колонку, чтобы О музее, Меню и Метка не наслаивались */
+    /* Перестраиваем шапку в колонку и обнуляем внешние отступы */
     .header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px 20px;
+        flex-direction: column !important;
+        gap: 15px !important;
+        padding: 15px 20px !important;
     }
-    .logo { font-size: 20px; }
+    .logo { font-size: 19px !important; margin: 0 !important; }
     .nav {
-        justify-content: center;
-        flex-wrap: wrap; 
-        gap: 12px;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        gap: 12px !important;
     }
-    .nav a { margin-left: 0; font-size: 14px; }
-    .nav .location-mark { padding: 6px 12px; font-size: 13px; }
+    .nav a { margin: 0 !important; font-size: 14px !important; }
+    .nav .location-mark { padding: 6px 12px !important; font-size: 13px !important; }
 
     /* Главный экран на мобильных */
-    .hero { height: 60vh; }
-    .hero h1 { font-size: 32px; }
-    .hero p { font-size: 15px; }
+    .hero { height: 60vh !important; }
+    .hero h1 { font-size: 28px !important; }
+    .hero p { font-size: 14px !important; }
 
-    /* Секция скролла: баннер уходит наверх, карточки встают под него */
-    .split-container { flex-direction: column; gap: 35px; }
-    .split-left-banner { width: 100%; height: 35vh; border-radius: 16px; }
-    .scroll-header { flex-direction: column; align-items: flex-start; gap: 5px; }
-    .scroll-main-title { font-size: 26px; }
-    .cheese-split-section { padding: 40px 0 40px 20px; } 
+    /* Раздельный скролл сыров */
+    .split-container { flex-direction: column !important; gap: 35px !important; }
+    .split-left-banner { width: 100% !important; height: 35vh !important; border-radius: 16px !important; }
+    .scroll-header { flex-direction: column !important; align-items: flex-start !important; gap: 5px !important; }
+    .scroll-main-title { font-size: 26px !important; }
+    .cheese-split-section { padding: 40px 0 40px 20px !important; } 
 
-    /* Блок меню на мобильных */
-    .restaurant-menu { padding: 40px 20px; }
-    .section-title { font-size: 28px; }
-    .menu-item { flex-direction: column; align-items: flex-start; gap: 10px; }
-    .menu-info { max-width: 100%; }
-    .menu-price { align-self: flex-end; font-size: 18px; color: #d35400; }
+    /* Меню ресторана строго по центру на мобильных */
+    .restaurant-menu { padding: 40px 20px !important; text-align: center !important; }
+    .section-title { font-size: 28px !important; text-align: center !important; }
+    .section-subtitle { text-align: center !important; }
+    .menu-item { flex-direction: column !important; align-items: flex-start !important; gap: 10px !important; }
+    .menu-info { max-width: 100 !important; text-align: center !important; }
+    .menu-price { align-self: center !important; font-size: 18px !important; color: #d35400 !important; }
 
-    /* Блок бронирования на мобильных */
-    .booking-section { padding: 60px 20px; background-attachment: scroll; }
-    .booking-card { padding: 30px 20px; }
-    .booking-card h2 { font-size: 26px; }
+    /* Блок бронирования */
+    .booking-section { padding: 60px 20px !important; background-attachment: scroll !important; }
+    .booking-card { padding: 30px 20px !important; }
+    .booking-card h2 { font-size: 26px !important; }
 
-    /* Контакты на мобильных */
-    .contacts-section { padding: 40px 20px; }
-    .contacts-container { grid-template-columns: 1fr; gap: 30px; }
-    .text-left { text-align: center; }
-    .contacts-info { text-align: center; }
-    .contacts-map { height: 350px; }
+    /* Контакты и карта */
+    .contacts-section { padding: 40px 20px !important; }
+    .contacts-container { grid-template-columns: 1fr !important; gap: 30px !important; }
+    .text-left { text-align: center !important; }
+    .contacts-info { text-align: center !important; }
+    .contacts-map { height: 320px !important; }
 }
-
