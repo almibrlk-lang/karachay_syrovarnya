@@ -179,7 +179,7 @@
 .split-left-banner img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 /* Текст поверх левого баннера */
@@ -453,6 +453,8 @@
 .restaurant-menu {
     padding: 80px 40px;
     background-color: #ffffff;
+    text-align: center; /* Центрирует всё содержимое блока */
+}
 }
 
 .menu-grid {
