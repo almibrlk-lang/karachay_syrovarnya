@@ -764,18 +764,22 @@
 @media (max-width: 768px) {
     /* Перестраиваем шапку в колонку и обнуляем внешние отступы */
     .header {
+        display: flex !important;
         flex-direction: column !important;
         gap: 15px !important;
         padding: 15px 20px !important;
     }
-    .logo { font-size: 19px !important; margin: 0 !important; }
+    .logo { font-size: 19px !important; 
+                margin: 0 0 5px 0 !important; 
+                text-align: center !important;
+                white-space: normal !important; }
     .nav {
         display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-        flex-wrap: wrap !important;
-        gap: 12px !important;
+                flex-direction: column !important; /* Выстраиваем ссылки и метку строго друг под другом */
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 10px !important;
+                width: 100% !important;
     }
     .nav a { margin: 0 !important; font-size: 14px !important; }
     .nav .location-mark { padding: 6px 12px !important; font-size: 13px !important; }

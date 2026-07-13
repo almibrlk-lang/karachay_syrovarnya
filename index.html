@@ -1,5 +1,51 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <!-- Жесткие мобильные стили для iPhone, изолированные от файла CSS -->
+    <style>
+        @media (max-width: 768px) {
+            .header {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 15px !important;
+                padding: 15px 20px !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            .logo { 
+                font-size: 19px !important; 
+                margin: 0 0 5px 0 !important; 
+                text-align: center !important;
+                white-space: normal !important;
+            }
+            .nav {
+                display: flex !important;
+                flex-direction: column !important; /* Выстраиваем ссылки и метку строго друг под другом */
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 10px !important;
+                width: 100% !important;
+            }
+            .nav a { 
+                margin: 0 !important; 
+                padding: 5px 0 !important;
+                font-size: 15px !important; 
+                text-align: center !important;
+            }
+            .nav .location-mark { 
+                margin-top: 5px !important;
+                padding: 8px 16px !important; 
+                font-size: 14px !important; 
+                display: inline-block !important;
+            }
+            .restaurant-menu { 
+                text-align: center !important; 
+            }
+            .section-title, .section-subtitle { 
+                text-align: center !important; 
+            }
+        }
+    </style>
+</head>   
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
