@@ -4,23 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Карачаевская Сыроварня | Музей-Ресторан</title>
-    <!-- Подключаем наш файл стилей CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Шапка сайта -->
     <header class="header">
-        <div class="logo">🧀 Карачаевская Сыроварня</div>
+        <div class="logo">Карачаевская Сыроварня | Музей-Ресторан</div>
         <nav class="nav">
             <a href="#about">О музее</a>
             <a href="#menu">Меню</a>
-            <a href="#booking" class="btn-nav">Бронь стола</a>
-        </nav>
+            <a href="#contacts" class="location-mark">📍 Карачаево-Черкесия</a>
+    </nav>
     </header>
 
-    <!-- Главный экран -->
+
+
+ <!-- Главный экран с фото-фоном ресторана и светодиодной анимацией -->
     <section class="hero">
+        
+        <!-- Векторный контур светодиодной ленты -->
+        <div class="led-strip-container">
+            <svg class="led-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <!-- Линия 1: Пробегает по левому краю и верху -->
+                <path class="led-line line-1" d="M 0 100 L 0 0 L 100 0" />
+                <!-- Линия 2: Пробегает по правому краю и низу -->
+                <path class="led-line line-2" d="M 100 0 L 100 100 L 0 100" />
+            </svg>
+        </div>
+
         <div class="hero-content">
             <h1>Первый музей-ресторан традиционного сыроделия на Кавказе</h1>
             <p>Попробуйте легендарные карачаевские сыры, сваренные по вековым рецептам среди кавказских гор.</p>
@@ -28,5 +40,167 @@
         </div>
     </section>
 
+          <!-- Блок: Асимметричная презентация с горизонтальным скроллом -->
+    <section id="about" class="cheese-split-section" data-aos="fade-up">
+        <div class="split-container">
+            
+            <!-- Левая колонка: Большая статичная фотография (40% ширины) -->
+            <div class="split-left-banner">
+                <img src="hero-bg.jpg" alt="Атмосфера Карачаевской сыроварни">
+                <div class="banner-overlay-text">
+                    <h3>Наши традиции</h3>
+                    <p>Качество, проверенное временем</p>
+                </div>
+            </div>
+
+            <!-- Правая колонка: Горизонтальная прокрутка карточек с фото сыров -->
+            <div class="split-right-scroll">
+                <div class="scroll-header">
+                    <h2 class="scroll-main-title">Виды наших сыров</h2>
+                    <span class="scroll-hint-text">Листайте вправо →</span>
+                </div>
+                
+                <!-- Сама горизонтальная лента -->
+                <div class="horizontal-strip">
+                    
+                    <!-- Карточка 1 -->
+                    <div class="strip-card">
+                        <div class="strip-img-box">
+                            <img src="cheese1.jpg" alt="Вид 1">
+                        </div>
+                        <h4>Вид 1 </h4>
+                        <p>Описание.</p>
+                    </div>
+
+                    <!-- Карточка 2 -->
+                    <div class="strip-card">
+                        <div class="strip-img-box">
+                            <img src="cheese2.jpg" alt="Вид 2">
+                        </div>
+                        <h4>Вид 2</h4>
+                        <p>Описание.</p>
+                    </div>
+
+                    <!-- Карточка 3 -->
+                    <div class="strip-card">
+                        <div class="strip-img-box">
+                            <img src="cheese3.jpg" alt="Вид 3">
+                        </div>
+                        <h4>Вид 3</h4>
+                        <p>Описание.</p>
+                    </div>
+
+                    <!-- Карточка 4 -->
+                    <div class="strip-card">
+                        <div class="strip-img-box">
+                            <img src="cheese4.jpg" alt="Вид 4">
+                        </div>
+                        <h4>Вид 4</h4>
+                        <p>Описание.</p>
+                    </div>
+
+                    <!-- Карточка 5 -->
+                    <div class="strip-card">
+                        <div class="strip-img-box">
+                            <img src="cheese5.jpg" alt="Вид 5">
+                        </div>
+                        <h4>Вид 5</h4>
+                        <p>Описание.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Блок: Меню ресторана -->
+    <section id="menu" class="restaurant-menu" data-aos="fade-right">
+        <h2 class="section-title">Меню ресторана</h2>
+        <p class="section-subtitle">Авторские блюда кавказской кухни от нашего шеф-повара</p>
+
+        <div class="menu-grid">
+            <!-- Блюдо 1 -->
+            <div class="menu-item">
+                <div class="menu-info">
+                    <h3>Позиция 1</h3>
+                    <p>Состав.</p>
+                </div>
+                <div class="menu-price">320 ₽</div>
+            </div>
+
+            <!-- Блюдо 2 -->
+            <div class="menu-item">
+                <div class="menu-info">
+                    <h3>Позиция 2</h3>
+                    <p>Состав.</p>
+                </div>
+                <div class="menu-price">750 ₽</div>
+            </div>
+
+            <!-- Блюдо 3 -->
+            <div class="menu-item">
+                <div class="menu-info">
+                    <h3>Позиция 3</h3>
+                    <p>Состав.</p>
+                </div>
+                <div class="menu-price">420 ₽</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок: Бронирование столика -->
+    <section id="booking" class="booking-section" data-aos="zoom-in">
+        <div class="booking-card">
+            <h2>Забронировать столик или экскурсию</h2>
+            <p>Оставьте ваши контакты, и администратор свяжется с вами в течение 10 минут для подтверждения брони.</p>
+            
+            <!-- Форма отправки данных -->
+            <form class="booking-form">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <input type="number" placeholder="Количество гостей" min="1" required>
+                <button type="submit" class="btn-submit">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+     <!-- Блок: Контакты и Яндекс Карта -->
+    <section id="contacts" class="contacts-section" data-aos="fade-up">
+        <div class="contacts-container">
+            <div class="contacts-info">
+                <h2 class="section-title text-left">Как нас найти</h2>
+                <p class="contacts-text">Мы находимся в живописном месте Малокарачаевского района, где чистый горный воздух и вековые традиции сыроделия соединяются воедино.</p>
+                
+                <div class="contacts-details">
+                    <p><strong>📍 Адрес:</strong> Карачаево-Черкесская Республика, Малокарачаевский район, трасса 91К-005, 50-й километр, д. 42</p>
+                    <p><strong>📞 Телефон:</strong> +7 (938) 159-11-11</p>
+                    <p><strong>⏰ Режим работы:</strong> Ежедневно с 10:00 до 23:00</p>
+                </div>
+            </div>
+            
+            <!-- Интерактивная Яндекс Карта -->
+            <div class="contacts-map">
+    <!-- Ссылка на Яндекс Карты по точным координатам, оформленная в виде стильной интерактивной карты -->
+    <a href="https://yandex.ru/maps/11020/karachay-cherkess-republic/geo/91k_005_50_y_kilometr/4376272736/?ll=42.614860%2C43.952185&z=17.22" target="_blank" class="map-fallback-link">
+        <div class="map-placeholder-bg">
+            <div class="map-marker-pulsing">📍</div>
+            <h3>Карачаевская сыроварня</h3>
+            <p>50-й километр трассы Черкесск — Домбай, д. 42</p>
+            <div class="map-btn-action">Открыть точку на Яндекс Картах</div>
+        </div>
+    </a>
+</div>
+    </section>
+ <!-- Подключение библиотеки анимации при скролле (AOS) -->
+    <link rel="stylesheet" href="https://unpkg.com" />
+    <script src="https://unpkg.com"></script>
+    <script>
+        // Активируем анимацию: она длится 1 секунду (1000мс) и срабатывает один раз при скролле
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
 </html>

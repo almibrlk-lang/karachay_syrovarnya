@@ -17,8 +17,9 @@
 }
 
 .logo {
-    font-size: 20px;
-    font-weight: bold;
+    font-family: 'Kurale', serif;
+    font-size: 30px;
+    font-weight: 400;
     color: #2c3e50;
 }
 
@@ -31,22 +32,303 @@
 }
 
 .nav a:hover {
-    color: #d35400; /* Цвет меняется при наведении */
+    color: #23522f; /* Цвет меняется при наведении */
 }
 
-/* Главный экран (Hero) */
+/* Стили для метки локации в шапке */
+.nav .location-mark {
+    background-color: #f7f1e3; /* Мягкий крафтовый фон */
+    color: #34495e; /* Фирменный сырный/оранжевый цвет текста */
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.2s;
+    border: 1px solid rgba(0, 211, 123, 0.2);
+}
+
+/* Эффект при наведении курсора */
+.nav .location-mark:hover {
+    background-color: #34495e;
+    color: #e4fef5; /* Текст становится белым при наведении */
+    transform: translateY(-1px);
+}
+
+/* Главный экран — фоновое изображение вашего ресторана */
 .hero {
-    height: 80vh;
-    /* Тёплый градиент, напоминающий дерево и сыр */
-    background: linear-gradient(135deg, #f39c12, #d35400); 
+    height: 75vh; 
+    position: relative;
+    background-image: url('restaurant.jpg'); /* Подключение вашего файла */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
     padding: 0 20px;
+    overflow: hidden;
+    z-index: 1;
+}
+/* Полупрозрачная фирменная зеленая маска поверх фото ресторана */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(35, 82, 47, 0.65), rgba(20, 40, 25, 0.8));
+    z-index: 1;
 }
 
+.hero-content {
+    position: relative;
+    z-index: 3; 
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+/* Главная кнопка на зеленом фоне */
+.btn-main {
+    display: inline-block;
+    background-color: #d35400;
+    color: #ffffff;
+    padding: 15px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-main:hover {
+    background-color: #23522f; /* Меняется на ваш зеленый */
+    transform: translateY(-2px);
+}
+/* Светодиодная лента (анимация по контуру экрана) */
+.led-strip-container {
+    position: absolute;
+    top: 20px; left: 20px; right: 20px; bottom: 20px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.led-svg { width: 100%; height: 100%; }
+
+.led-line {
+    fill: none;
+    stroke: #c2def9; /* Золотистый цвет огоньков */
+    stroke-width: 0.4;
+    stroke-linecap: round;
+    opacity: 0;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+}
+
+
+.line-1 { animation: drawLine 2s ease-in-out forwards, fadeOutLed 1s ease-in 2s forwards; }
+.line-2 { animation: drawLine 2s ease-in-out 0.8s forwards, fadeOutLed 1s ease-in 2.8s forwards; }
+
+@keyframes drawLine {
+    0% { stroke-dashoffset: 200; opacity: 0.3; filter: drop-shadow(0 0 2px #c2def9); }
+    50% { opacity: 1; filter: drop-shadow(0 0 6px #c2def9) drop-shadow(0 0 12px #c2def9); }
+    100% { stroke-dashoffset: 0; opacity: 1; filter: drop-shadow(0 0 8px #c2def9) drop-shadow(0 0 15px #c2def9); }
+}
+
+@keyframes fadeOutLed {
+    0% { opacity: 1; filter: drop-shadow(0 0 8px #c2def9); }
+    100% { opacity: 0; filter: drop-shadow(0 0 0px transparent); }
+}
+/* Общая комбинированная секция */
+.cheese-split-section {
+    padding: 80px 40px;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+/* Двухколоночный флекс-контейнер */
+.split-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+}
+
+/* ЛЕВАЯ КОЛОНКА: Баннер (40% ширины) */
+.split-left-banner {
+    width: 30%;
+    height: 50vh;
+    border-radius: 22px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0; /* Запрещаем левой колонке сжиматься */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.split-left-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Текст поверх левого баннера */
+.banner-overlay-text {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%;
+    padding: 40px 30px;
+    background: linear-gradient(transparent, rgba(35, 82, 47, 0.85)); /* Градиент в ваш фирменный зеленый */
+    color: white;
+    text-align: left;
+}
+
+.banner-overlay-text h3 {
+    font-family: 'Kurale', serif;
+    font-size: 26px;
+    margin-bottom: 5px;
+}
+
+.banner-overlay-text p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ПРАВАЯ КОЛОНКА: Прокрутка (занимает все оставшееся место) */
+.split-right-scroll {
+    flex: 1;
+    min-width: 0; /* Важно для корректной работы скролла внутри флекса */
+    text-align: left;
+}
+
+.scroll-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+    padding-right: 10px;
+}
+
+.scroll-main-title {
+    font-size: 32px;
+    color: #2c3e50;
+    font-family: 'Kurale', serif;
+}
+
+.scroll-hint-text {
+    font-size: 14px;
+    color: #95a5a6;
+    font-weight: 500;
+}
+
+/* Лента горизонтального скролла */
+.horizontal-strip {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto; /* Включаем горизонтальную прокрутку */
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Стилизация полосы прокрутки */
+.horizontal-strip::-webkit-scrollbar {
+    height: 6px;
+}
+.horizontal-strip::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.horizontal-strip::-webkit-scrollbar-thumb {
+    background: #23522f; /* Ваш фирменный зеленый */
+    border-radius: 10px;
+}
+
+/* Карточка сыра внутри горизонтальной ленты */
+.strip-card {
+    flex: 0 0 240px; /* Карточки строго 240px в ширину, не сжимаются */
+    background: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.strip-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Контейнер для фото сыра внутри карточки */
+.strip-img-box {
+    width: 100%;
+    height: 180px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+}
+
+.strip-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.strip-card:hover .strip-img-box img {
+    transform: scale(1.05);
+}
+
+.strip-card h4 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-bottom: 6px;
+}
+
+.strip-card p {
+    font-size: 13px;
+    color: #7f8c8d;
+    line-height: 1.4;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 992px) {
+    .split-container {
+        flex-direction: column; /* Перестраиваем в одну колонку на планшетах и телефонах */
+        gap: 40px;
+    }
+    .split-left-banner {
+        width: 100%; /* Картинка сверху встает на всю ширину */
+        height: 40vh;
+    }
+    .cheese-split-section {
+        padding: 40px 20px;
+    }
+}
+
+/* Цвет кнопки на зеленом фоне сделаем более контрастным */
+.btn-main {
+    display: inline-block;
+    background-color: #23522f; /* Фирменный зеленый*/
+    color: #ffffff;
+    padding: 15px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: transform 0.2s, background-color 0.2s;
+}
+.btn-main:hover {
+    background-color: #23522f8f;
+    transform: translateY(-2px);
+}
 .hero-content {
     max-width: 800px;
 }
@@ -67,7 +349,7 @@
 .btn-main {
     display: inline-block;
     background-color: #ffffff;
-    color: #d35400;
+    color: #23522f;
     padding: 15px 35px;
     border-radius: 30px;
     text-decoration: none;
@@ -80,4 +362,365 @@
 .btn-main:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+/* Стили для каталога сыров */
+.catalog {
+    padding: 80px 40px;
+    background-color: #faf7f2; /* Легкий крафтовый оттенок фона */
+    text-align: center;
+}
+
+.section-title {
+    font-size: 36px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 50px;
+}
+
+/* Сетка для карточек */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Стили карточки сыра */
+.cheese-card {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    border: 1px solid #eaeaea;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cheese-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(211, 84, 0, 0.1);
+}
+
+.card-emoji {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.cheese-card h3 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.cheese-desc {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.cheese-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #23522f;
+    margin-bottom: 25px;
+}
+
+/* Кнопка в карточке */
+.btn-buy {
+    display: block;
+    background-color: #2c3e50;
+    color: #ffffff;
+    padding: 12px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-buy:hover {
+    background-color: #23522f;
+}
+/* Стили для меню ресторана */
+.restaurant-menu {
+    padding: 80px 40px;
+    background-color: #ffffff;
+}
+
+.menu-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed #cccccc; /* Красивая пунктирная линия, как в ресторанном меню */
+}
+
+.menu-info {
+    text-align: left;
+    max-width: 75%;
+}
+
+.menu-info h3 {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 50px;
+    margin-bottom: 8px;
+}
+
+.menu-info p {
+    font-size: 14px;
+    color: #7f8c8d;
+    line-height: 1.5;
+}
+
+.menu-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Стили для блока бронирования */
+.booking-section {
+    padding: 100px 40px;
+    background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://unsplash.com') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.booking-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* Модный эффект размытия заднего плана */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.booking-card h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.booking-card p {
+    font-size: 15px;
+    margin-bottom: 35px;
+    opacity: 0.8;
+}
+
+/* Настройка полей ввода */
+.booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.booking-form input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    color: #2c3e50;
+    outline: none;
+}
+
+.booking-form input::placeholder {
+    color: #95a5a6;
+}
+
+/* Кнопка отправки формы */
+.btn-submit {
+    background-color: #23522f;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-submit:hover {
+    background-color: #23522f;
+}
+/* Вспомогательный класс для выравнивания заголовка влево */
+.text-left {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Стили для всей секции контактов */
+.contacts-section {
+    padding: 80px 40px;
+    background-color: #faf7f2; /* Наш фирменный светлый крафтовый фон */
+}
+
+/* Контейнер, разделяющий контент на 2 колонки */
+.contacts-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Ровно пополам на больших экранах */
+    gap: 50px;
+    align-items: center;
+}
+
+/* Левая колонка с текстом */
+.contacts-info {
+    text-align: left;
+}
+
+.contacts-text {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.contacts-details p {
+    font-size: 16px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.contacts-details strong {
+    color: #23522f; /* Подсвечиваем иконки и важные слова оранжевым */
+}
+
+/* Правая колонка с картой */
+.contacts-map {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eaeaea;
+    height: 450px;
+    background-color: #e5e3df; /* Цвет реального дорожного полотна Яндекс Карт */
+}
+
+/* Оформление ссылки-карты */
+.map-fallback-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+/* Крафтовый фон-сетка, имитирующий карту */
+.map-placeholder-bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    /* Указываем путь к вашему сохраненному скриншоту карты */
+    background-image: url('map.png'); 
+    background-size: cover; /* Карта аккуратно заполнит весь блок */
+    background-position: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Белая маска поверх скриншота, чтобы надписи и кнопка легко читались */
+.map-placeholder-bg::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(255, 255, 255, 0.75); /* Если хотите карту поярче, уменьшите 0.75 до 0.5 */
+    z-index: -1;
+}
+
+.map-placeholder-bg h3 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin: 10px 0 5px 0;
+}
+
+.map-placeholder-bg p {
+    font-size: 15px;
+    color: #7f8c8d;
+    margin-bottom: 25px;
+}
+
+/* Пульсирующий маркер локации */
+.map-marker-pulsing {
+    font-size: 45px;
+    animation: pulseMarker 2s infinite;
+}
+
+@keyframes pulseMarker {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+/* Стильная кнопка поверх карты */
+.map-btn-action {
+    background-color: #23522f;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 211, 127, 0.3);
+    transition: all 0.3s;
+}
+
+/* Эффекты при наведении мышки на всю область карты */
+.map-fallback-link:hover .map-placeholder-bg {
+    background-color: #d1dad3; /* Карта плавно меняет цвет на теплый сырный при наведении */
+}
+
+.map-fallback-link:hover .map-btn-action {
+    background-color: #2c3e50;
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.3);
+    transform: translateY(-2px);
+}
+
+
+.map-link:hover .map-hint {
+    background: #2c3e50; /* Подсказка становится оранжевой при наведении */
+}
+
+/* Адаптивность для мобильных устройств (экраны меньше 768px) */
+@media (max-width: 768px) {
+    .contacts-container {
+        grid-template-columns: 1fr; /* Перестраиваем в одну колонку друг под другом */
+        gap: 30px;
+    }
+    .contacts-section {
+        padding: 40px 20px;
+    }
+    .text-left {
+        text-align: center;
+    }
+    .contacts-info {
+        text-align: center;
+    }
 }
