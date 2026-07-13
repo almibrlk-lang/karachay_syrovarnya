@@ -44,6 +44,25 @@
                 text-align: center !important; 
             }
         }
+        .menu-item {
+                display: flex !important;
+                flex-direction: row !important; /* Жестко держим их в один ряд на телефонах */
+                justify-content: space-between !important; /* Название уходит влево, цена — вправо */
+                align-items: flex-start !important; /* Выравниваем по верхней линии */
+                gap: 20px !important;
+            }
+            .menu-info {
+                max-width: 70% !important; /* Ограничиваем ширину текста, чтобы он не налезал на цену */
+                text-align: left !important; /* Текст блюда читается слева направо */
+            }
+            .menu-price {
+                align-self: flex-start !important; /* Фиксируем цену сверху справа */
+                white-space: nowrap !important; /* Запрещаем цене переноситься */
+                font-size: 18px !important;
+                font-weight: bold !important;
+                color: #2c3e50 !important;
+            }
+            
     </style>
 </head>   
 <head>
