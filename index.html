@@ -64,7 +64,13 @@
             }
             
     </style>
-</head>   
+</head>
+ <!-- Умный редирект: убирает www и переводит на красивый русский адрес -->
+    <script>
+        if (window.location.hostname.startsWith('www.')) {
+            window.location.href = 'https://карачаевские-сыры.рф' + window.location.pathname + window.location.search;
+        }
+    </script>   
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
